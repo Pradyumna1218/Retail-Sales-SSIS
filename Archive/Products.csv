@@ -1,0 +1,9 @@
+ProductID,ProductName,Category,Price
+P001,Laptop,Electronics,55000
+P002,Mouse,Accessories,800
+P003,Keyboard,Accessories,1500
+P004,Monitor,Electronics,12000
+P005,Printer,Electronics,9500
+P002,Mouse Duplicate,Accessories,850
+,Unnamed Product,Electronics,500
+P006,Faulty Item,Electronics,-200

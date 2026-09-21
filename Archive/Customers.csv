@@ -1,0 +1,10 @@
+CustomerID,CustomerName,Email,City,State
+C001,Rahul Sharma,rahul@gmail.com,Delhi,Delhi
+C002,Amit Kumar,amit@gmail.com,Gurgaon,Haryana
+C003,Priya Singh,priya@gmail.com,Jaipur,Rajasthan
+C004,Sneha Reddy,sneha@gmail.com,Hyderabad,Telangana
+C005,Vikram Iyer,vikram@gmail.com,Chennai,Tamil Nadu
+,Anonymous Customer,anon@gmail.com,Mumbai,Maharashtra
+C002,Amit Duplicate,amitd@gmail.comGurgaon,Haryana
+C006,,neha@gmail.com,Lucknow,Uttar Pradesh
+C007,Karan Verma,karan-at-gmail.com,Pune,Maharashtra
