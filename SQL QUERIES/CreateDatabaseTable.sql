@@ -1,16 +1,14 @@
-CREATE DATABASE RetailDW;
-GO
 
 USE RetailDW;
 GO
 
 CREATE TABLE dbo.DimCustomer (
     CustomerKey     INT IDENTITY(1,1) NOT NULL PRIMARY KEY,   -- surrogate key
-    CustomerID      VARCHAR(10)       NOT NULL,               -- business key from source file
-    CustomerName    VARCHAR(100)      NOT NULL,
-    Email           VARCHAR(100)      NULL,
-    City            VARCHAR(50)       NULL,
-    State           VARCHAR(50)       NULL,
+    CustomerID      VARCHAR(50)       NOT NULL,               -- business key from source file
+    CustomerName    VARCHAR(200)      NOT NULL,
+    Email           VARCHAR(200)      NULL,
+    City            VARCHAR(100)       NULL,
+    State           VARCHAR(100)       NULL,
     CreatedDate     DATETIME          NOT NULL DEFAULT GETDATE(),
     ModifiedDate    DATETIME          NOT NULL DEFAULT GETDATE(),
 
@@ -20,10 +18,10 @@ GO
 
 CREATE TABLE dbo.DimProduct (
     ProductKey      INT IDENTITY(1,1) NOT NULL PRIMARY KEY,   -- surrogate key
-    ProductID       VARCHAR(10)       NOT NULL,               -- business key from source file
-    ProductName     VARCHAR(100)      NOT NULL,
-    Category        VARCHAR(50)       NULL,
-    Price           DECIMAL(12,2)     NOT NULL,
+    ProductID       VARCHAR(50)       NOT NULL,               -- business key from source file
+    ProductName     VARCHAR(200)      NOT NULL,
+    Category        VARCHAR(100)       NULL,
+    Price           DECIMAL(18,2)     NOT NULL,
     CreatedDate     DATETIME          NOT NULL DEFAULT GETDATE(),
     ModifiedDate    DATETIME          NOT NULL DEFAULT GETDATE(),
 
@@ -33,10 +31,10 @@ GO
 
 CREATE TABLE dbo.DimStore (
     StoreKey        INT IDENTITY(1,1) NOT NULL PRIMARY KEY,   -- surrogate key
-    StoreID         VARCHAR(10)       NOT NULL,               -- business key from source file
-    StoreName       VARCHAR(100)      NOT NULL,
-    City            VARCHAR(50)       NULL,
-    State           VARCHAR(50)       NULL,
+    StoreID         VARCHAR(50)       NOT NULL,               -- business key from source file
+    StoreName       VARCHAR(200)      NOT NULL,
+    City            VARCHAR(100)       NULL,
+    State           VARCHAR(100)       NULL,
 
     CONSTRAINT UQ_DimStore_StoreID UNIQUE (StoreID)
 );
@@ -106,7 +104,7 @@ CREATE TABLE dbo.stg_Sales (
     StoreID         VARCHAR(50)     NULL,
     Quantity        VARCHAR(50)     NULL,
     UnitPrice       VARCHAR(50)     NULL,
-    SourceFileName  VARCHAR(255)    NULL,
+    SourceFileName  VARCHAR(500)    NULL,
     LoadedDate      DATETIME        NOT NULL DEFAULT GETDATE()
 );
 GO
@@ -131,9 +129,9 @@ GO
 
 CREATE TABLE dbo.RejectedRecords (
     RejectedRecordID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    SourceFile       VARCHAR(255)      NOT NULL,
+    SourceFile       VARCHAR(500)      NOT NULL,
     RecordKey        VARCHAR(100)      NULL,        -- e.g. the CustomerID/ProductID/SaleID that failed
-    SourceTable      VARCHAR(50)       NULL,        -- Customers / Products / Stores / Sales (helps filtering)
+    SourceTable      VARCHAR(500)       NULL,        -- Customers / Products / Stores / Sales (helps filtering)
     ErrorReason      VARCHAR(500)      NOT NULL,
     RawData          VARCHAR(MAX)      NULL,        -- optional: full original row for debugging
     ErrorDate        DATETIME          NOT NULL DEFAULT GETDATE()
